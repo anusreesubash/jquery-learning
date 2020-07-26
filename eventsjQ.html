@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jquery crash course</title>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous">
+  </script>
+  <style type="text/css">
+    body{
+      font-size: 17px;
+      font-family: ariel;
+      background-color: #f4f4f4;
+      line-height: 1.5em;
+    }
+    header{
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-bottom:4px solid black;
+      margin-bottom: 10px;
+    }
+    container{
+      width: 90%;
+      margin: auto;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>JQUERY CRASH COURSE</h1>
+  </header>
+  <div id="container">
+   <h1>Mouse Events</h1>
+   <button id="btn1" class="btnClass">Button 1</button>
+   <button id="btn2">Button 2</button>
+   <p id="para1">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+   tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+   quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+   consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+   cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+   proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+   <!-- <h1 id="cords"></h1> -->
+   <hr>
+   <form id="form">
+     <label>Name</label><br/>
+     <input type="text" id="name" name="name"/>
+     <br>
+     <label>Email</label><br/>
+     <input type="email" id="email" name="email"/>
+     <br>
+     <label>Gender</label><br/>
+     <select id="gender" name="gender"/>
+       <option value="male">Male</option>
+       <option value="female">Female</option>
+     </select>
+     <br/>
+     <input type="submit" value="submit"/>
+
+   </form>
+  </div>
+  <script>
+    $(document).ready(function(){
+     //  $('#btn1').click(function f(){
+     //  alert('Button Clicked');
+     // });
+      // $('#btn1').on('click', function(){
+      //   alert('Button Clicked');
+      // });
+    //   $('#btn1').click(function f(){
+    //    $('#para1').hide();
+    //   });
+    // $('#btn2').click(function f(){
+    //  $('#para1').show();
+    // });
+    // $('#btn1').click(function f(){
+    //    $('#para1').toggle();
+    //   });
+    // $('#btn1').dblclick(function f(){
+    //    $('#para1').toggle();
+    //  });
+    // $('#btn1').hover(function f(){
+    //    $('#para1').toggle();
+    //  });
+    // {$('#btn1').on('mouseenter', function f(){
+    //    $('#para1').toggle();
+    //  });
+    // $('#btn1').on('mouseleave', function f(){
+    //    $('#para1').toggle();
+    //  });} hover is a combination of these two
+    // $('#btn1').on('mousemove', function f(){
+    //    $('#para1').toggle();
+    //  });
+    // $('#btn1').on('mousedown', function f(){
+    //    $('#para1').toggle();
+    //  });
+    // $('#btn1').on('mouseup', function f(){
+    //    $('#para1').toggle();
+    //  });
+    // $('#btn1').click(function(e){
+    //   //console.log(e.currentTarget.id);
+    //   //alert(e.currentTarget.innerHTML);
+    //   //alert(e.currentTarget.outerHTML);
+    //   //alert(e.currentTarget.className);
+    //  });
+    $(document).on('mousemove', function f(e){
+      $('#cords').html('cords: Y: ' + e.clientY+ ' X: ' +e.clientX);
+    });
+  
+    $('input').focus(function(){
+      $(this).css('background', '#f4f4f4');
+    });
+    $('input').blur(function(){
+      $(this).css('background', 'white');
+    });
+    $('input').keyup(function(e){
+      console.log(e.target.value);
+    });
+    $('select#gender').change(function(e){
+      alert('gender changed to '+ e.target.value );
+    });
+    $('#form').submit(function(e){
+      e.preventDefault();
+      var name = $('input#name').val();
+      console.log(name);
+    });
+  });
+  </script>
+
+</body>
+</html>
